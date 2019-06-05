@@ -1,0 +1,5 @@
+This grid is a mix of the L125 and L30 grid.
+The bottom portion is using the L125 for pressure levesl under 650hPa.
+Above 650hPa, it is using the L30 grid.
+
+hparish created this grid to test the effect of upper atomosphere grid resolution on the stratospheric biases we see in the L125 sims. 

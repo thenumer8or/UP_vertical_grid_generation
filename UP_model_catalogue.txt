@@ -1,0 +1,15 @@
+Here are the most important parameters / directories that help navigate the SP / UP model:
+
+
+IC input files, output frequency and namelist:							/models/atm/cam/bld/user_nl_cam
+Choose UM5 or MPDATA advection scheme:								/models/atm/cam/bld/configure
+Define compsets / compset related arguments:							/scripts/ccsm_utils/Case.template/config_compsets.xml
+Level of CRM acceleration is hardwired at:							/models/atm/cam/src/physics/cam/phys_control.F90 
+-DCRMACCEL ifdef flag (line 146, L256 on Cori) hardwired at:					/scripts/ccsm_utils/Machines/config_compilers.xml
+Directory of “use_cases”									/models/atm/cam/bld/namelist_files/use_cases/
+-r8 double precision compiler option								add a “<ADD_FFLAG> -r8 …” line after –DCRM line in /scripts/ccsm_utils/Machines/config_compilers.xml
+Aerosol concentration scale factor								/models/atm/cam/src/physics/cam/microp_aero.F90
+Template machine dependent files on Cori							/global/project/projectdirs/ccsm1/collections/cesm1_2_2/scripts/ccsm_utils/Machines
+-DSTRATOKILLER ifdef flag, MP's hack to control the excessive T tendencies in stratosphere	/scripts/ccsm_utils/Machines/config_compilers.xml, used in: crm_module.F90, and damping.F90
+-DBULLSEYECRMDX ifdef flag to regionalize the adaptive/static DX				/scripts/ccsm_utils/Machines/config_compilers.xml, used in: crm_module.F90, and bullseye_dx_change.F90
+-DLIBERATE_BL ifdef flag to liberate BL nudging and also regonalize nudging			/scripts/ccsm_utils/Machines/config_compilers.xml, used in:
